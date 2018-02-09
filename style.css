@@ -1,0 +1,120 @@
+*{
+    font-family: 'Supermercado One', cursive;
+    color: whitesmoke;
+    background-color: #282828;
+    font-size: 20px;
+}
+
+h1 {
+    color: #abd4d6;
+}
+
+p {
+    color: #2fed74;
+}
+
+button {
+    font-size: 20px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+}
+
+#clickerbutton {
+    font-size: 100px;
+}
+
+#lejon {
+    height: 100px;
+    width: 250px;
+    font-size: 20;
+}
+
+#zebra {
+    height: 100px;
+    width: 250px;
+    font-size: 20;
+}
+
+#V-bucks {
+    height: 100px;
+    width: 250px;
+    font-size: 20;
+}
+
+#score {
+    text-align: center;
+}
+
+.top {
+    border-bottom: 1px solid black;
+}
+
+.menu ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.menu li {
+    display: inline;
+    font-size 2em;
+    text-align: center;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu a:hover {
+    border-bottom: 2px solid grey;
+}
+
+article {
+    height: 10vh;
+}
+
+#clickerbutton {
+    height: 300px;
+    width: 300px;
+    border-radius: 200px;
+    background-color:;
+}
+
+#clickerbutton:active {
+    color: #1543d8;
+    outline:0px;
+}
+
+#clickebutton:focus {
+    outline: 0p
+}
+
+#manypoints{
+    animation: 1s linear infinite rgbtext;
+}
+
+#buy{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 250px;
+    height: 100%;
+    background-color: green;
+}
+
+@keyframes rgbtext {
+    00% {
+        color: red;
+    }
+    25% {
+        color: green;
+    }
+    75% {
+        color: blue;
+    }
+    100% {
+        color: red;
+    }
+    
+}

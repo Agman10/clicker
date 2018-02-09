@@ -1,0 +1,77 @@
+/* element fÃ¶r manipulation */
+var button = document.getElementById("clickerbutton");
+var lejonKnapp = document.getElementById("lejon");
+var scoreDiv = document.getElementById("score");
+var powerText = document.getElementById("powerText");
+var zebraKnapp = document.getElementById("zebra");
+
+/* Skapa ett nytt element fÃ¶r poÃ¤ngen */
+var scoreText = document.createElement("p");
+
+/* spelvariabler */
+var clickValue = 1;
+var bank = 0;
+var lejonCost = 15;
+var lejonClicks = 0;
+var zebraCost = 30;
+var zebra = null;
+var zebraTimer = 0;
+
+/* startvÃ¤rden */
+scoreText.textContent = "Points: 0";
+lejonKnapp.textContent = "Lejon: " + lejonCost;
+zebraKnapp.textContent = "Zebra: " + zebraCost;
+
+/* click event + logic */
+button.addEventListener("click", function() {
+	// kontrollera om vi har ett lejon aktivt, annars Ã¥terstÃ¤ll clickValue
+	if (lejonClicks > 0) {
+		lejonClicks--;
+	} else if (lejonClicks == 0) {
+		clickValue = 1;		
+	}
+	bank += clickValue; // lÃ¤gg till vÃ¤rdet vid click
+	scoreText.textContent = "Points: " + bank; // sÃ¤tt textvÃ¤rdet i p elementet till bank.
+}, true);
+
+/* kod fÃ¶r zebrapowerup med rÃ¤knare */
+zebraKnapp.addEventListener("click", function() {
+	if (bank >= zebraCost && zebraTimer == 0) {
+		bank -= zebraCost;
+		zebraTimer += 10;
+		powerText.textContent = "KÃ¶pte zebra";
+
+		// LÃ¤gg till setInterval med en funktion som laddas varje sekund
+		zebra = setInterval(function() {
+			bank += 10;
+			scoreText.textContent = "Points: " + bank;
+			zebraTimer--;
+
+			if (zebraTimer == 0) {
+				powerText.textContent = "Slut pÃ¥ zebra";
+				clearInterval(zebra);  // kalla pÃ¥ clearInterval fÃ¶r att rensa setInterval
+			}
+		}, 1000);
+	} else if (zebraTimer > 0) {
+		powerText.textContent = "Du har redan zebra";
+	} else {
+		powerText.textContent = "Du har inte rÃ¥d med zebra";
+	}
+}, true);
+
+// knapp och kod fÃ¶r lejon powerup
+lejonKnapp.addEventListener("click", function() {
+	if (bank >= lejonCost) {
+		clickValue *= 2;
+		bank -= lejonCost;
+		lejonCost *= 2;
+		lejonClicks += 10;
+		lejonKnapp.textContent = "Lejon: " + lejonCost;
+		powerText.textContent = "KÃ¶pte lejon";
+		scoreText.textContent = "Points: " + bank; // sÃ¤tt textvÃ¤rdet i p elementet till bank.
+	} else {
+		powerText.textContent = "Du har inte rÃ¥d med lejon";
+	}
+}, true);
+
+scoreDiv.appendChild(scoreText); // fÃ¤st p elementet i score diven
