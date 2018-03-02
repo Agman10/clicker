@@ -1,3 +1,5 @@
+button:focus {outline:0;}
+button:focus {outline:0;}
 *{
     font-family: 'Supermercado One', cursive;
     color: whitesmoke;
@@ -24,22 +26,34 @@ button {
     font-size: 100px;
 }
 
-#lejon {
+#coins {
     height: 100px;
     width: 250px;
     font-size: 20;
+    background-image: url("bilder/mariocoin.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 70px;
 }
 
-#zebra {
+#rupees {
     height: 100px;
     width: 250px;
     font-size: 20;
+    background-image: url("bilder/rupee.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 70px;
 }
 
 #V-bucks {
     height: 100px;
     width: 250px;
     font-size: 20;
+    background-image: url("bilder/vbucks.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 70px;
 }
 
 #score {
@@ -90,17 +104,26 @@ article {
     outline: 0p
 }
 
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
 #manypoints{
     animation: 1s linear infinite rgbtext;
 }
 
 #buy{
-    position: absolute;
+    
     top: 0px;
     right: 0px;
-    width: 250px;
+    width: 20%;
+    margin-left: 80%;
     height: 100%;
-    background-color: green;
+    
 }
 
 @keyframes rgbtext {

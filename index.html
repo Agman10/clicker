@@ -43,12 +43,12 @@
             <div id="score"> </div>
             <div id="powerUps"></div>
             <p id="powerText"></p>
-            <!--<button id="lejon">lejon</button>-->
-            <!--<button id="zebra">zebra</button>-->
+            <!--<button id="coins">coins</button>-->
+            <!--<button id="rupees">rupees</button>-->
             </article>
         <div id="buy"> 
-        <button id="lejon">lejon</button>
-        <button id="zebra">zebra</button>
+        <button id="coins">coins</button>
+        <button id="rupees">rupees</button>
         <button id="V-bucks">V-bucks</button>
         
         
@@ -60,8 +60,9 @@
 <script>
     
     var button = document.getElementById("clickerbutton");
-    var lejonKnapp = document.getElementById("lejon");
-    var zebraKnapp = document.getElementById("zebra");
+    var coinKnapp = document.getElementById("coins");
+    var rupeeKnapp = document.getElementById("rupees");
+    var VbucksKnapp = document.getElementById("V-bucks");
     var scoreDiv = document.getElementById("score");
     var scoreText = document.createElement("p");
     
@@ -69,23 +70,26 @@
     //var counts = 0
     var clickValue = 1;
     var bank = 0;
-    var lejonCost = 15;
-    var lejonClicks = 0;
-    var zebraCost = 30;
-    var zebra = null;
-    var zebraTimer = 0;
+    var coinCost = 15;
+    var coinClicks = 0;
+    var rupeeCost = 30;
+    var rupees = null;
+    var rupeeTimer = 0;
+    var VbucksCost = 20;
+    var VbucksClicks = 0;
     
     scoreText.textContent = "Points: 0";
-    lejonKnapp.textContent = "Lejon: " + lejonCost;
-    zebraKnapp.textContent = "Zebra: " + zebraCost;
+    coinKnapp.textContent = "Coins: " + coinCost;
+    rupeeKnapp.textContent = "Rupees: " + rupeeCost;
+    VbucksKnapp.textContent = "V-bucks: " + VbucksCost;
     
     button.addEventListener("click", function() {
         //console.count("click"); 
         //counts++ 
         //button.innerHTML = "clicks: " + counts;
-        if(lejonClicks > 0) {
-            lejonClicks++;
-        } else if(lejonClicks == 0) {
+        if(coinClicks > 0) {
+            coinClicks++;
+        } else if(coinClicks == 0) {
             clickValue = 1;
             
         }
@@ -94,43 +98,57 @@
     
     });
     
+    /*
+    VbucksKnapp.addEventListener("click", function() {
+        if(VbucksClicks > 0) {
+            VbucksClicks+2;
+        } else if(VbucksClicks == 0) {
+            clickValue += 0;
+            
+        }
+        bank += clickValue;
+        scoreText.textContent = "Points: " + bank;
+    
+    });
+    */
+    
     if(bank >= 10) {
         document.getElementById("score").style.color = "blue";
         //scoreText.textContent = "Pointss: " + bank;
     }
     
-    zebraKnapp.addEventListener("click",function() {
-        console.log("köpte zebra");
-        if(bank >= zebraCost && zebraTimer ==0) {
-            bank -= zebraCost;
-            zebraTimer += 30;
+    rupeeKnapp.addEventListener("click",function() {
+        console.log("köpte rupees");
+        if(bank >= rupeeCost && rupeeTimer ==0) {
+            bank -= rupeeCost;
+            rupeeTimer += 40;
             
             
-            powerText.textContent ="köpte zebra";
+            powerText.textContent ="köpte rupees";
             
-       //zebraKnapp.textContent = zebraTimer--;
+       //rupeeKnapp.textContent = rupeeTimer--;
             
-            zebra = setInterval(function() {
+            rupees = setInterval(function() {
                 bank += 1;
                 scoreText.textContent = "Points: " + bank;
-                zebraTimer--;
-                zebraKnapp.textContent ="kan köpa om " + zebraTimer + " sekunder";
+                rupeeTimer--;
+                rupeeKnapp.textContent ="kan köpa om " + rupeeTimer + " sekunder";
                 
                 
-                console.log(zebraTimer);
-                if(zebraTimer == 0){
-                    powerText.textContent = "slut på zebra";
-                    zebraKnapp.textContent = "Zebra " + zebraCost;
-                    clearInterval(zebra);
+                console.log(rupeeTimer);
+                if(rupeeTimer == 0){
+                    powerText.textContent = "slut på rupees";
+                    rupeeKnapp.textContent = "Rupees " + rupeeCost;
+                    clearInterval(rupees);
                 }
                 
             }, 1000);
             
             
-        } else if (zebraTimer > 0) {
-            powerText.textContent = "Du har redan Zebra";
+        } else if (rupeeTimer > 0) {
+            powerText.textContent = "Du har redan Rupees";
         } else {
-            powerText.textContent = "Du har inte råd med zebra";
+            powerText.textContent = "Du har inte råd med Rupees";
         }
         
           
@@ -139,23 +157,37 @@
     
     scoreDiv.appendChild(scoreText);
     
-    lejonKnapp.addEventListener("click",function() {
-        if (bank >= lejonCost) {
-            console.log("köpte lejon");
+    coinKnapp.addEventListener("click",function() {
+        if (bank >= coinCost) {
+            console.log("köpte coins");
             clickValue += 1;
-            bank -= lejonCost;
-            lejonCost *= 2;
-            lejonClicks += 10;
-            lejonKnapp.textContent = "Lejon: " + lejonCost;
-            powerText.textContent = "Köpte lejon";
+            bank -= coinCost;
+            coinCost *= 2;
+            coinClicks += 10;
+            coinKnapp.textContent = "Coins: " + coinCost;
+            powerText.textContent = "Köpte coins";
             scoreText.textContent = "Points: " + bank;
             console.log(bank);
         }else {
             console.log("du har inte råd!");
         }
     });
-                            
-  
+    
+    VbucksKnapp.addEventListener("click",function() {
+        if (bank >= VbucksCost) {
+            console.log("köpte Vbucks");
+            clickValue += 2;
+            bank -= VbucksCost;
+            VbucksCost *= 2;
+            VbucksClicks += 10;
+            VbucksKnappKnapp.textContent = "Vbucks: " + VbucksCost;
+            powerText.textContent = "Köpte Vbucks";
+            scoreText.textContent = "Points: " + bank;
+            console.log(bank);
+        }else {
+            console.log("du har inte råd!");
+        }
+    });
     
     
     
