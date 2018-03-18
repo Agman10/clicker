@@ -50,8 +50,8 @@
             <!--<button id="rupees">rupees</button>-->
             </article>
         <div id="buy"> 
-        <button id="coins">coins</button>
-        <button id="rupees">rupees</button>
+        <button id="coins">Coins</button>
+        <button id="rupees">Rupees</button>
         <button id="V-bucks">V-bucks</button>
         
         
@@ -78,10 +78,10 @@
     var rupeeCost = 30;
     var rupees = null;
     var rupeeTimer = 0;
-    var VbucksCost = 100;
+    var VbucksCost = 200;
     var VbucksClicks = 0;
     
-    scoreText.textContent = "Points: 0";
+    scoreText.textContent = "Points: " + bank;
     coinKnapp.textContent = "Coins: " + coinCost;
     rupeeKnapp.textContent = "Rupees: " + rupeeCost;
     VbucksKnapp.textContent = "V-bucks: " + VbucksCost;
@@ -92,10 +92,10 @@
         //button.innerHTML = "clicks: " + counts;
         if(coinClicks > 0) {
             coinClicks++;
-        } else if(coinClicks == 0) {
+        } /*else if(coinClicks == 0) {
             clickValue = 1;
             
-        }
+        }*/
         bank += clickValue;
         scoreText.textContent = "Points: " + bank;
     
@@ -149,9 +149,9 @@
             
             
         } else if (rupeeTimer > 0) {
-            powerText.textContent = "Du har redan Rupees";
+            powerText.textContent = "Du har redan Rupees.";
         } else {
-            powerText.textContent = "Du har inte råd med Rupees";
+            powerText.textContent = "Du har inte råd med Rupees.";
         }
         
           
@@ -166,29 +166,31 @@
             clickValue += 1;
             bank -= coinCost;
             coinCost *= 2;
-            coinClicks += 10;
-            coinKnapp.textContent = "Coins: " + coinCost;
-            powerText.textContent = "Köpte coins";
+            coinClicks += 1;
+            coinKnapp.textContent = "Coins: " + coinCost + " " + coinClicks;
+            powerText.textContent = "Köpte Coins.";
             scoreText.textContent = "Points: " + bank;
             console.log(bank);
         }else {
             console.log("du har inte råd!");
+            powerText.textContent = "Du har inte råd med Coins.";
         }
     });
     
     VbucksKnapp.addEventListener("click",function() {
         if (bank >= VbucksCost) {
             console.log("köpte Vbucks");
-            clickValue += 2;
+            clickValue += 3;
             bank -= VbucksCost;
             VbucksCost *= 2;
-            VbucksClicks += 10;
-            VbucksKnappKnapp.textContent = "Vbucks: " + VbucksCost;
-            powerText.textContent = "Köpte Vbucks";
+            VbucksClicks += 1;
+            VbucksKnapp.textContent = "V-Bucks: " + VbucksCost + " " + VbucksClicks;
+            powerText.textContent = "Köpte V-bucks.";
             scoreText.textContent = "Points: " + bank;
             console.log(bank);
         }else {
             console.log("du har inte råd!");
+            powerText.textContent = "Du har inte råd med V-Bucks.";
         }
     });
     
