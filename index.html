@@ -3,7 +3,7 @@
     
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" comtent="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VG Currency Clicker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Supermercado+One" rel="stylesheet">
@@ -53,6 +53,7 @@
         <button id="coins">Coins</button>
         <button id="rupees">Rupees</button>
         <button id="V-bucks">V-bucks</button>
+        <button id="robux">Robux</button>
         
         
         </div>
@@ -66,6 +67,7 @@
     var coinKnapp = document.getElementById("coins");
     var rupeeKnapp = document.getElementById("rupees");
     var VbucksKnapp = document.getElementById("V-bucks");
+    var RobuxKnapp = document.getElementById("robux");
     var scoreDiv = document.getElementById("score");
     var scoreText = document.createElement("p");
     
@@ -80,11 +82,14 @@
     var rupeeTimer = 0;
     var VbucksCost = 200;
     var VbucksClicks = 0;
+    var RobuxCost = 1000;
+    var RobuxClicks = 0;
     
     scoreText.textContent = "Points: " + bank;
     coinKnapp.textContent = "Coins: " + coinCost;
     rupeeKnapp.textContent = "Rupees: " + rupeeCost;
     VbucksKnapp.textContent = "V-bucks: " + VbucksCost;
+    RobuxKnapp.textContent = "Robux: " + RobuxCost;
     
     button.addEventListener("click", function() {
         //console.count("click"); 
@@ -98,6 +103,7 @@
         }*/
         bank += clickValue;
         scoreText.textContent = "Points: " + bank;
+        //scoreText.textContent = "Clickvalue: " + clickValue;
     
     });
     
@@ -197,6 +203,5 @@
 
     </script>
     
-</main>
 </body>
 </html>
